@@ -29,7 +29,11 @@ datetime <- paste(dates,times)
 dateobjs <- strptime(datetime,"%Y-%m-%d %H:%M:%S")
 powerdata$Date <- dateobjs
 
-
+##Save directly to PNG
+png("plot1-test.png", width=480, height=480)
 
 ## Create histogram
 hist(powerdata$Global_active_power, main="Global Active Power", col = "red", xlab="Global Active Power (kilowatts)", ylab = "Frequency")
+
+##turn off png device
+dev.off

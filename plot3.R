@@ -29,6 +29,9 @@ datetime <- paste(dates,times)
 dateobjs <- strptime(datetime,"%Y-%m-%d %H:%M:%S")
 powerdata$Date <- dateobjs
 
+#open png device
+png("plot3.png", width=480, height=480)
+
 ## create plot
 plot(powerdata$Date, powerdata$Sub_metering_1, type = "l", ylab="Energy sub metering", xlab = "")
 points(powerdata$Date, powerdata$Sub_metering_2, type = "l" ,col = "red")
@@ -38,3 +41,4 @@ points(powerdata$Date, powerdata$Sub_metering_3, type = "l", col = "blue")
 legendtext  = c("Sub_metering_1","Sub_metering_2","Sub_metering_3")
 legcol = c("black","red", "blue")
 legend("topright", legend = legendtext, lty = 1, col = legcol)
+dev.off()

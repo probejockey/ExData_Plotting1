@@ -29,6 +29,9 @@ datetime <- paste(dates,times)
 dateobjs <- strptime(datetime,"%Y-%m-%d %H:%M:%S")
 powerdata$Date <- dateobjs
 
+## save directly to png
+png("plot4.png", width=480, height=480)
+
 ##set numbers of rows and columns
 par(mfrow = c(2,2))
     
@@ -42,3 +45,6 @@ legendtext  = c("Sub_metering_1","Sub_metering_2","Sub_metering_3")
 legcol = c("black","red", "blue")
 legend("topright", legend = legendtext, lty = 1, bty = "n", col = legcol, cex = 0.5)
 plot(powerdata$Date, powerdata$Global_reactive_power, type = "l", xlab = "datetime", ylab = "Global_reactive_power")
+
+## turn off png device
+dev.off()
